@@ -1,7 +1,7 @@
 {
   "name": "eleventy-netlify-cms-boilerplate",
   "version": "1.0.0",
-  "description": "A reusable Eleventy starter with blog, team pages, and Netlify CMS.",
+  "description": "A reusable Eleventy starter with team pages and Netlify CMS.",
   "main": ".eleventy.js",
   "scripts": {
     "start": "npx @11ty/eleventy --serve",
@@ -15,8 +15,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@11ty/eleventy-plugin-rss": "^1.0.7",
-    "luxon": "^3.6.1",
     "markdown-it": "^14.1.0"
   },
   "devDependencies": {

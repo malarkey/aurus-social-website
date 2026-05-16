@@ -1,0 +1,32 @@
+{% set principlesPage = collections.all | findByFileSlug("principles") %}
+
+{% if principlesPage %}
+<div class="layout" data-layout="blackblood">
+
+<div>
+{% if principlesPage.data.title %}
+<h2>{{ principlesPage.data.title }}</h2>
+{% endif %}
+{% if principlesPage.data.intro %}
+{{ principlesPage.data.intro | markdown | safe }}
+{% endif %}
+</div><!-- one -->
+
+<div data-layout="flex">
+{% for item in principlesPage.data.items %}
+<div class="item-principle">
+{% if item.icon %}{{ item.icon | safe }}{% endif %}
+<div class="principle-content">
+<h3>{{ item.title }}</h3>
+{% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
+</div><!-- principle-content -->
+</div><!-- item -->
+{% endfor %}
+
+</div><!-- two -->
+
+</div><!-- layout -->
+{% if principlesPage.templateContent %}
+{{ principlesPage.templateContent | safe }}
+{% endif %}
+{% endif %}

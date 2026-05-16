@@ -1,0 +1,53 @@
+{% extends "layouts/base.html" %}
+
+{% set pageHeaderTitle = title %}
+
+{% block content %}
+
+<section>
+<div class="layout" data-layout="mek-quake">
+
+<div>
+<h1 data-size="4xl">{{ title }}</h1>
+{% if lede %}{{ lede | markdown | safe }}{% endif %}
+{{ main | markdown | safe }}
+</div><!-- one -->
+
+<div data-variant="scroll-v-panel">
+<div data-variant="scroll-v">
+<div>{% include "svgs/side-panel-1b.svg" %}</div>
+<hr>
+<div>{% include "svgs/side-panel-2b.svg" %}</div>
+<hr>
+<div>{% include "svgs/side-panel-4b.svg" %}</div>
+</div>
+</div><!-- two -->
+
+</div><!-- layout -->
+</section>
+
+
+
+
+<hr>
+
+<section>
+<div class="layout" data-layout="ro-jaws">
+
+<div>
+{{ block1 | markdown | safe }}
+</div><!-- one -->
+
+<div>
+{{ block2 | markdown | safe }}
+</div><!-- two -->
+
+</div><!-- layout -->
+</section>
+
+
+
+
+{% include "partials/cta.html" %}
+
+{% endblock %}

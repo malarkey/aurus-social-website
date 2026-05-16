@@ -1,0 +1,94 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<div class="layout" data-layout="mad-ronn">
+
+<div>
+<h1 data-size="l" data-variant="sans-serif">{{ title }}</h1>
+{% if lede %}{{ lede | markdown | safe }}{% endif %}
+
+</div><!-- one -->
+
+</div><!-- layout -->
+
+
+
+<section id="portfolio">
+
+<nav aria-label="Portfolio panels">
+<ul class="panels-navigation">
+<li><a href="#panel-daimler">Project Daimler</a></li>
+<li><a href="#panel-hat">Project Hat</a></li>
+<li><a href="#panel-northern">Project Northern</a></li>
+<li><a href="#panel-primrose">Project Primrose</a></li>
+</ul>
+</nav>
+
+<div id="panels">
+
+<div class="panel" id="panel-daimler">
+<div class="panel-content">
+<small class="alt-uppercase">Project</small>
+<h2 data-size="3xl" data-variant="serif">Daimler</h2>
+{{ daimler | markdown | safe }}
+</div><!-- panel-content -->
+<div class="panel-img">{% include "svgs/project-daimler.svg" %}</div>
+</div><!-- tab-portfolio -->
+
+<div class="panel" id="panel-hat">
+<div class="panel-content">
+<small class="alt-uppercase">Project</small>
+<h2 data-size="3xl" data-variant="serif">Hat</h2>
+{{ hat | markdown | safe }}
+</div><!-- panel-content -->
+<div class="panel-img">{% include "svgs/project-hat.svg" %}</div>
+</div><!-- tab-portfolio -->
+
+<div class="panel" id="panel-northern">
+<div class="panel-content">
+<small class="alt-uppercase">Project</small>
+<h2 data-size="3xl" data-variant="serif">Northern</h2>
+{{ northern | markdown | safe }}
+</div><!-- panel-content -->
+<div class="panel-img">{% include "svgs/project-northern.svg" %}</div>
+</div><!-- tab-portfolio -->
+
+<div class="panel" id="panel-primrose">
+<div class="panel-content">
+<small class="alt-uppercase">Project</small>
+<h2 data-size="3xl" data-variant="serif">Primrose</h2>
+{{ primrose | markdown | safe }}
+</div><!-- panel-content -->
+<div class="panel-img">{% include "svgs/project-primrose.svg" %}</div>
+</div><!-- tab-portfolio -->
+
+</div><!-- panels -->
+
+</section>
+
+
+
+
+
+<section>
+
+<div class="layout" data-layout="ro-jaws">
+
+<div>
+{{ block1 | markdown | safe }}
+</div><!-- one -->
+
+<div>
+{{ table | markdown | safe }}
+</div><!-- two -->
+
+</div><!-- layout -->
+
+</section>
+
+
+
+{% include "partials/cta.html" %}
+
+{% endblock %}

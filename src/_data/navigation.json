@@ -1,25 +1,20 @@
 {
   "items": [
     {
-      "text": "About",
+      "text": "About us",
       "url": "/about/"
     },
     {
-      "text": "Investors",
-      "url": "/investors/"
+      "text": "Social impact",
+      "url": "/social-impact/"
     },
     {
-      "text": "Insights",
-      "url": "/insights/"
+      "text": "Portfolio",
+      "url": "/portfolio/"
     },
     {
       "text": "Contact",
       "url": "/contact/"
-    },
-    {
-      "text": "Sign in",
-      "url": "/",
-      "class": "btn"
     }
   ]
 }

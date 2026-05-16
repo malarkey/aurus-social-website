@@ -1,0 +1,36 @@
+{% set teamPage = collections.all | findByFileSlug("team") %}
+
+{% if teamPage %}
+<div class="layout" data-layout="blackblood">
+
+<div>
+{% if teamPage.data.title %}
+<h2>{{ teamPage.data.title }}</h2>
+{% endif %}
+{% if teamPage.data.intro %}
+{{ teamPage.data.intro | markdown | safe }}
+{% endif %}
+</div><!-- one -->
+
+<div data-layout="flex" data-variant="scroll-h">
+{% for item in teamPage.data.items %}
+<div class="item-team">
+{% if item.img %}
+{% set teamImage = item.img %}
+{% if item.img[0] != "/" %}
+{% set teamImage = "/images/" + item.img %}
+{% endif %}
+<img src="{{ teamImage }}" alt="{{ item.title }}">
+{% endif %}
+<h3>{{ item.title }}</h3>
+{% if item.role %}<p>{{ item.role }}</p>{% endif %}
+{% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
+</div><!-- item -->
+{% endfor %}
+</div><!-- two -->
+
+</div><!-- layout -->
+{% if teamPage.templateContent %}
+{{ teamPage.templateContent | safe }}
+{% endif %}
+{% endif %}

@@ -1,71 +1,105 @@
 {% extends "layouts/base.html" %}
 
 {% set pageHeaderTitle = title %}
-{% set serviceFaqs = collections.faqs | filterFaqsByCategory("about") %}
 
 {% block content %}
 
-<div class="layout" data-layout="mek-quake">
+<section>
+
+<div class="layout" data-layout="deadlock">
 
 <div>
-<h1>{{ title }}</h1>
+<h1 data-size="4xl">{{ title }}</h1>
 {% if lede %}{{ lede | markdown | safe }}{% endif %}
-{{ block1 | markdown | safe }}
+{{ main | markdown | safe }}
 </div><!-- one -->
 
-<div>
-{{ block2 | markdown | safe }}
+<div data-variant="box">
+{{ aside | markdown | safe }}
 </div><!-- two -->
 
 </div><!-- layout -->
 
-
-
-<figure>
-{% include "svgs/panel-4.svg" %}
-</figure>
+</section>
 
 
 
-<div class="layout" data-layout="mek-quake">
+
+
+<hr>
+
+<section>
+{% include "partials/team.html" %}
+</section>
+
+
+
+
+
+<section>
+{% include "partials/principles.html" %}
+</section>
+
+
+
+
+
+<section data-variant="panel">
+<div class="layout" data-layout="deadlock">
+
+<div>
+{{ block2 | markdown | safe }}
+</div><!-- one -->
+
+<div data-variant="scroll-v-panel">
+<div data-variant="scroll-v">
+<div class="panel"><a href="/portfolio/#panel-daimler">{% include "svgs/side-panel-5a.svg" %} <span data-visibility="hidden">Project Daimler</span></a></div>
+<hr>
+<div class="panel"><a href="/portfolio/#panel-hat">{% include "svgs/side-panel-6a.svg" %} <span data-visibility="hidden">Project Hat</span></a></div>
+<hr>
+<div class="panel"><a href="/portfolio/#panel-northern">{% include "svgs/side-panel-7a.svg" %} <span data-visibility="hidden">Project Northern</span></a></div>
+<hr>
+<div class="panel"><a href="/portfolio/#panel-primrose">{% include "svgs/side-panel-8a.svg" %} <span data-visibility="hidden">Project Primrose</span></a></div>
+</div>
+</div><!-- two -->
+
+</div><!-- layout -->
+</section>
+
+
+
+
+
+<section>
+
+<div class="layout" data-layout="happy-shrapnel">
 
 <div>
 {{ block3 | markdown | safe }}
 </div><!-- one -->
 
-<div>
-{{ block4 | markdown | safe }}
+<div class="layout" data-layout="ro-jaws">
+
+{% for item in collections.partners %}
+<article class="item-partner">
+{% if item.data.url %}
+<h3><a href="{{ item.data.url }}">{{ item.data.name }}</a></h3>
+
+{% else %}
+<h3>{{ item.data.name }}</h3>
+{% endif %}
+
+{% if item.templateContent %}<p>{{ item.templateContent | safe }}</p>{% endif %}
+</article>
+{% endfor %}
+
 </div><!-- two -->
 
 </div><!-- layout -->
 
-
-
-<figure>
-{% include "svgs/panel-3.svg" %}
-</figure>
+</section>
 
 
 
-<!-- <div class="layout" data-layout="joe-pineapples">
-
-<div>
-
-{% if serviceFaqs.length %}
-<div>
-<h2>Frequently asked questions</h2>
-
-{% for faqItem in serviceFaqs %}
-<details>
-<summary>{{ faqItem.data.question }}</summary>
-<p>{{ faqItem.data.answer }}</p>
-</details>
-{% endfor %}
-</div>
-{% endif %}
-
-</div>
-
-</div> -->
 
 {% endblock %}

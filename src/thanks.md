@@ -1,7 +1,7 @@
 ---
 layout: layouts/page.html
-title: Thanks
+title: Thank you for contacting Aurus.
 permalink: /thanks/
 ---
 
-<p>Thanks for getting in touch. Replace this page with your real confirmation message or redirect behaviour.</p>
+<p>We appreciate your enquiry and a member of our team will be in touch shortly.</p>

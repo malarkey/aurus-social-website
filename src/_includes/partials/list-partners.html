@@ -1,0 +1,12 @@
+{% for item in collections.partners %}
+<article class="item-partner">
+{% if item.data.url %}
+<h3><a href="{{ item.data.url }}">{{ item.data.name }}</a></h3>
+
+{% else %}
+<h3>{{ item.data.name }}</h3>
+{% endif %}
+
+{% if item.data.summary %}<p>{{ item.data.summary }}</p>{% endif %}
+</article>
+{% endfor %}

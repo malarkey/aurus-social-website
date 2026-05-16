@@ -1,13 +1,24 @@
 {% set assetHash = global.random() %}
 
 <!DOCTYPE html>
-<html lang="en" data-page="{% if page.url == '/' %}home{% else %}inner{% endif %}"{% if theme %} data-theme="{{ theme }}"{% endif %}>
+<html lang="en"{% if theme %} data-authored-theme="{{ theme }}" data-theme="{{ theme }}"{% endif %}>
 
 {% include "partials/head.html" %}
 
 <body id="{{ site.siteID }}">
 
 {% include "partials/header.html" %}
+
+{% if theme == "reversed" %}
+<div class="theme-switcher">
+<span class="theme-switcher-label">High contrast</span>
+<button aria-checked="false" aria-label="Toggle high contrast theme" class="theme-toggle" data-theme-toggle role="switch" type="button">
+<span aria-hidden="true" class="theme-toggle-track">
+<span class="theme-toggle-thumb"></span>
+</span>
+</button>
+</div>
+{% endif %}
 
 {% if featureImage %}
 <figure>
@@ -20,9 +31,7 @@
 
 {% block content %}
 
-{% if showSubnav %}
-{% include "partials/subnav.html" %}
-{% endif %}
+{% if showSubnav %}{% include "partials/subnav.html" %}{% endif %}
 
 <h1>{{ title }}</h1>
 {{ lede | safe }}

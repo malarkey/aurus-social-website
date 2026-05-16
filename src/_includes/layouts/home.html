@@ -1,85 +1,42 @@
 {% set assetHash = global.random() %}
 
 <!DOCTYPE html>
-<html lang="en" data-page="{% if page.url == '/' %}home{% else %}inner{% endif %}"{% if theme %} data-theme="{{ theme }}"{% endif %}>
+<html lang="en"{% if theme %} data-authored-theme="{{ theme }}" data-theme="{{ theme }}"{% endif %}>
 
 {% include "partials/head.html" %}
 
 <body id="{{ site.siteID }}">
 
-<section class="panel-full-bleed" data-theme="reversed">
-
-<div class="layout" data-layout="happy-shrapnel">
+<div class="layout" data-layout="deadlock">
 
 <div>
 {% include "partials/header.html" %}
 
-<div class="alt-box">
-<h1 data-visibility="hidden">{{ title }}</h1>
-{{ block1 | markdown | safe }}
-</div><!-- box -->
+{% if title %}<h1 data-size="4xl">{{ title }}</h1>{% endif %}
+
+<div class="alt-columns">
+{{ main | markdown | safe }}
+</div><!-- columns -->
 </div><!-- one -->
 
-<div>
+<div data-variant="box">
+{{ aside | markdown | safe }}
+</div><!-- two -->
+
+</div><!-- layout -->
+
+
+
+
+<section data-variant="box">
+
 <figure>
-<img src="{{ site.assetPath }}/images/img-banner-1.webp" alt="{{ title }}">
+
+<picture>
+<source srcset="/images/img-index-sm.webp" media="(max-width:64em)" />
+<img src="/images/img-index.webp" alt="{{ title }}" />
+</picture>
 </figure>
-</div><!-- two -->
-
-</div><!-- layout -->
-
-
-
-<div class="layout" data-layout="mongrol">
-
-<div>
-{{ block2 | markdown | safe }}
-</div><!-- one -->
-
-<div>
-{{ block3 | markdown | safe }}
-</div><!-- two -->
-
-<div>
-<figure>
-<a href="javascript:void(0)"><img src="{{ site.assetPath }}/images/tmp-video.webp" alt="Watch our explainer video"></a>
-<figcaption>Watch our explainer video</figcaption>
-</figure>
-</div><!-- three -->
-
-</div><!-- layout -->
-
-
-
-<hr data-function="spacer">
-
-<div class="layout" data-bordered="top" data-layout="mongrol">
-
-<div>
-{{ block4 | markdown | safe }}
-
-<ul class="alt-inline">
-<li><a href="/investors/">Investors</a></li>
-<li><a href="/governance/">Governance</a></li>
-<li><a href="/partners/">Partners</a></li>
-<li><a href="/faqs/">FAQs</a></li>
-</ul>
-
-</div><!-- one -->
-
-<div>
-{{ block5 | markdown | safe }}
-</div><!-- two -->
-
-<div>
-{{ block6 | markdown | safe }}
-</div><!-- three -->
-
-</div><!-- layout -->
-
-</section>
-
-
 
 <div id="panels">
 <div class="panel">{% include "svgs/panel-1.svg" %}</div>
@@ -88,20 +45,57 @@
 <div class="panel">{% include "svgs/panel-4.svg" %}</div>
 </div><!-- panels -->
 
+{% if blockquote %}<blockquote data-variant="l">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 75"><g fill="none"><path fill="#b2b095" fill-rule="evenodd" d="M0 0h75v75H0z"/><path fill="#fff" d="M13 32.538q0-6.906 3.4-9.722T26.667 20h8.24v8.247h-7.979q-2.484 0-3.53.771-1.047.77-1.047 2.917v5.23h12.555V55H13zm26.094 0q0-6.906 3.4-9.722T52.761 20H61v8.247h-7.978q-2.484 0-3.53.771-1.047.77-1.047 2.917v5.23H61V55H39.094z"/></g></svg>
+<p>{{ blockquote}}</p>
+</blockquote>{% endif %}
+
+</section>
 
 
-<h2 data-size="2xl">Insights</h2>
 
-<div data-content="posts" data-variant="index">
-{% for item in collections.blog %}
-{% if loop.index <= 4 %}
-{% set postListItems = [item] %}
-{% include "partials/post-list.html" %}
-{% endif %}
-{% endfor %}
-</div>
 
+
+<div class="layout" data-layout="blackblood">
+
+<div>
+{{ block3 | markdown | safe }}
+</div><!-- one -->
+
+<div class="layout" data-layout="mongrol">
+{% include "partials/list-partners.html" %}
+</div><!-- two -->
+
+</div><!-- layout -->
+
+
+
+
+
+<hr data-function="spacer">
+
+<div class="layout" data-layout="ro-jaws">
+
+<div>
+{{ block4 | markdown | safe }}
+</div><!-- one -->
+
+<div data-layout="flex">
+{{ table | markdown | safe }}
+</div><!-- two -->
+
+</div><!-- layout -->
+
+
+
+
+
+<hr>
+
+{% include "partials/principles.html" %}
+{% include "partials/cta.html" %}
 {% include "partials/footer.html" %}
+
 <script src="{{ site.assetPath }}/js/scripts.js"></script>
 </body>
 

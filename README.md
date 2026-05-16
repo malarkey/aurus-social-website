@@ -1,13 +1,12 @@
 # Eleventy + Netlify CMS Boilerplate
 
-A reusable Eleventy starter for brochure sites, insights publishing, and small editorial projects.
+A reusable Eleventy starter for brochure sites and small editorial projects.
 
 ## Included
 
 - Eleventy v3
 - Netlify CMS admin at `/admin/`
-- Insights posts with category and tag archive pages
-- RSS feed generation
+- Shared editable content sections for principles, team, and partners
 - Neutral starter content and placeholder assets
 
 ## Install
@@ -36,12 +35,11 @@ Static files are written to `dist/`.
 
 - `src/index.md`: homepage
 - `src/about.md`: about page
-- `src/blog.md`: paginated insights index
 - `src/contact.md`: contact page
-- `src/investors.md`: investors page
-- `src/governance.md`: governance page
-- `src/partners.md`: partnerships page
-- `src/posts/*.md`: insights posts
+- `src/portfolio.md`: portfolio page
+- `src/social-impact.md`: social impact page
+- `src/principles.md`: shared principles content
+- `src/team.md`: shared team content
 - `src/_data/site.json`: site-wide metadata
 - `src/_data/navigation.json`: main navigation
 - `src/_data/footer_navigation.json`: footer navigation
@@ -51,5 +49,5 @@ Static files are written to `dist/`.
 The CMS is configured for Git Gateway on the `main` branch. Before launching a real site:
 
 1. Update `src/_data/site.json` with your production URL and contact details.
-2. Replace the sample posts and legal copy.
+2. Replace the sample shared content and legal copy.
 3. Enable Netlify Identity and Git Gateway in your Netlify project.
