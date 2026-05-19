@@ -32,20 +32,20 @@ COLOR SYSTEM
 LIGHT THEME WITH ACCENT COLORS FOR VISUAL HIERARCHY
 -------------------- */
 
---color-accent: #B2B095; /* Primary brand accent */
---color-background-default: #fff; /* Main background */
---color-background-alt: #6E938F; /* Alternative background */
---color-base: #D6DDDC; /* Darker background for contrast */
---color-border: #6E938F; /* Border and secondary accent */
---color-brand: #6E938F; /* Primary brand colour */
---color-text-default: #0C0F0E; /* Primary text colour */
---color-text-alt: #F0F0EC; /* Text on dark backgrounds */
---color-text-link: #6E938F;
---color-text-link-hover: #6E938F;
---color-text-link-decoration: #6E938F;
+--color-accent: oklch(0.7515 0.0374 103.77); /* Primary brand accent */
+--color-background-default: oklch(1.0000 0.0000 89.88); /* Main background */
+--color-background-alt: oklch(0.6345 0.0414 187.92); /* Alternative background */
+--color-base: oklch(0.8919 0.0077 186.87); /* Darker background for contrast */
+--color-border: oklch(0.6345 0.0414 187.92); /* Border and secondary accent */
+--color-brand: oklch(0.6345 0.0414 187.92); /* Primary brand colour */
+--color-text-default: oklch(0.1646 0.0053 173.62); /* Primary text colour */
+--color-text-alt: oklch(0.9540 0.0053 106.50); /* Text on dark backgrounds */
+--color-text-link: oklch(0.6345 0.0414 187.92);
+--color-text-link-hover: oklch(0.6345 0.0414 187.92);
+--color-text-link-decoration: oklch(0.6345 0.0414 187.92);
 --color-button-background: var(--color-background-default);
---color-button-text: #0C0F0E;
---color-input-background: #D6DDDC;
+--color-button-text: oklch(0.1646 0.0053 173.62);
+--color-input-background: oklch(0.8919 0.0077 186.87);
 
 /* --------------------
 BORDER SYSTEM
@@ -104,41 +104,41 @@ STANDARDIZED TIMING FOR CONSISTENT INTERACTIONS
 }
 
 [data-theme="reversed"] {
---color-accent: #B2B095; /* Primary brand accent */
---color-background-default: #6E938F; /* Main background */
---color-background-alt: #fff; /* Alternative background *//* Primary brand colour */
---color-base: #D6DDDC; /* Darker background for contrast */
---color-border: #D6DDDC; /* Border and secondary accent */
---color-brand: #6E938F; /* Primary brand colour */
---color-text-default: #F0F0EC; /* Primary text colour */
---color-text-alt: #0C0F0E; /* Text on dark backgrounds */
---color-text-link: #fff;
---color-text-link-hover: #fff;
---color-text-link-decoration: #fff;
+--color-accent: oklch(0.7515 0.0374 103.77); /* Primary brand accent */
+--color-background-default: oklch(0.6345 0.0414 187.92); /* Main background */
+--color-background-alt: oklch(1.0000 0.0000 89.88); /* Alternative background *//* Primary brand colour */
+--color-base: oklch(0.8919 0.0077 186.87); /* Darker background for contrast */
+--color-border: oklch(0.8919 0.0077 186.87); /* Border and secondary accent */
+--color-brand: oklch(0.6345 0.0414 187.92); /* Primary brand colour */
+--color-text-default: oklch(0.9540 0.0053 106.50); /* Primary text colour */
+--color-text-alt: oklch(0.1646 0.0053 173.62); /* Text on dark backgrounds */
+--color-text-link: oklch(1.0000 0.0000 89.88);
+--color-text-link-hover: oklch(1.0000 0.0000 89.88);
+--color-text-link-decoration: oklch(1.0000 0.0000 89.88);
 --color-button-background: var(--color-background-default);
 --color-button-text: var(--color-text-default);
---color-input-background: #D6DDDC;
+--color-input-background: oklch(0.8919 0.0077 186.87);
 }
 
 [data-theme="high-contrast"] {
---color-accent: #B2B095; /* Primary brand accent */
---color-background-default: #2C3C3A; /* Main background */
---color-background-alt: #fff; /* Alternative background *//* Primary brand colour */
---color-base: #D6DDDC; /* Darker background for contrast */
---color-border: #6E938F; /* Border and secondary accent */
---color-brand: #6E938F; /* Primary brand colour */
---color-text-default: #F0F0EC; /* Primary text colour */
---color-text-alt: #0C0F0E; /* Text on dark backgrounds */
+--color-accent: oklch(0.7515 0.0374 103.77); /* Primary brand accent */
+--color-background-default: oklch(0.3414 0.0211 186.76); /* Main background */
+--color-background-alt: oklch(1.0000 0.0000 89.88); /* Alternative background *//* Primary brand colour */
+--color-base: oklch(0.8919 0.0077 186.87); /* Darker background for contrast */
+--color-border: oklch(0.6345 0.0414 187.92); /* Border and secondary accent */
+--color-brand: oklch(0.6345 0.0414 187.92); /* Primary brand colour */
+--color-text-default: oklch(0.9540 0.0053 106.50); /* Primary text colour */
+--color-text-alt: oklch(0.1646 0.0053 173.62); /* Text on dark backgrounds */
 --color-text-link: var(--color-accent);
---color-text-link-hover: #fff;
+--color-text-link-hover: oklch(1.0000 0.0000 89.88);
 --color-text-link-decoration: var(--color-accent);
 --color-button-background: var(--color-background-default);
 --color-button-text: var(--color-text-default);
---color-input-background: #D6DDDC;
+--color-input-background: oklch(0.8919 0.0077 186.87);
 }
 
 [data-variant="panel"] hr {
---color-border: #D6DDDC; }
+--color-border: oklch(0.8919 0.0077 186.87); }
 
 /* --------------------
 UTILITY STYLES
@@ -681,7 +681,7 @@ textarea {
 -webkit-appearance: none;
 appearance: none;
 background-color: var(--color-input-background);
-border: var(--border-width-r) solid transparent;
+border: var(--border-width-r) solid oklch(0 0 0 / 0);
 border-radius: 0;
 box-shadow: none;
 box-sizing: border-box;
@@ -794,7 +794,7 @@ TABLE STYLES
 -------------------- */
 
 table {
-background-color: transparent;
+background-color: oklch(0 0 0 / 0);
 border-collapse: collapse;
 border-spacing: 0;
 font-family: inherit;
@@ -849,7 +849,7 @@ padding-inline-start: var(--spacing-s); }
 .alt-stripes thead tr th:nth-child(odd):not(:first-child),
 .alt-stripes tbody tr td:nth-child(odd):not(:first-child),
 .alt-stripes tbody tr:nth-child(odd) {
-background-color: #f2f4f4; }
+background-color: oklch(0.9656 0.0021 197.12); }
 
 
 
@@ -1151,6 +1151,11 @@ from { opacity: 0; }
 to { opacity: 1; }
 }
 
+@keyframes daimler-panel-fade {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
 #panels {
 margin-block: var(--spacing-l);
 position: relative; }
@@ -1189,6 +1194,58 @@ grid-column: 1 / -1; }
 #portfolio .panel-img {
 grid-column: 1 / -1; }
 
+@media (prefers-reduced-motion: no-preference) {
+#portfolio #panel-daimler {
+--daimler-bar-fade-duration: .45s;
+--daimler-bar-hold-duration: 3s;
+--daimler-bar-step: .54s;
+--daimler-data-delay-start: .3s;
+--daimler-data-delay-step: .12s;
+--daimler-data-duration: .3s;
+--daimler-hover-opacity: .4;
+--daimler-map-delay: 0s;
+--daimler-map-duration: .45s; }
+
+#portfolio #panel-daimler #svg-map-daimler,
+#portfolio #panel-daimler [id^="svg-data-"],
+#portfolio #panel-daimler #svg-progress-bars rect {
+opacity: 0; }
+
+#portfolio #panel-daimler.is-active #svg-map-daimler,
+#portfolio #panel-daimler.is-active [id^="svg-data-"] {
+opacity: 1; }
+
+#portfolio #panel-daimler.is-active #svg-progress-bars rect.is-visible {
+opacity: 1; }
+
+#portfolio #panel-daimler [id^="svg-data-"],
+#portfolio #panel-daimler #svg-progress-bars rect {
+transition: opacity var(--animate-duration-faster) var(--animate-function); }
+
+#portfolio #panel-daimler #svg-data-1 { --daimler-data-index: 0; }
+#portfolio #panel-daimler #svg-data-2 { --daimler-data-index: 1; }
+#portfolio #panel-daimler #svg-data-3 { --daimler-data-index: 2; }
+#portfolio #panel-daimler #svg-data-4 { --daimler-data-index: 3; }
+#portfolio #panel-daimler #svg-data-5 { --daimler-data-index: 4; }
+#portfolio #panel-daimler #svg-data-6 { --daimler-data-index: 5; }
+#portfolio #panel-daimler #svg-data-7 { --daimler-data-index: 6; }
+#portfolio #panel-daimler #svg-data-8 { --daimler-data-index: 7; }
+
+#portfolio #panel-daimler svg:has(> g > [id^="svg-data-"]:hover) > g > [id^="svg-data-"]:not(:hover) {
+opacity: var(--daimler-hover-opacity); }
+
+#portfolio #panel-daimler.is-active #svg-map-daimler {
+animation: daimler-panel-fade var(--daimler-map-duration) var(--daimler-map-delay) var(--animate-function) backwards; }
+
+#portfolio #panel-daimler #svg-map-daimler path {
+fill: oklch(0.7110 0.0336 186.55); }
+
+#portfolio #panel-daimler #svg-map-daimler path:hover {
+fill: oklch(0.5416 0.0349 188.55); }
+
+#portfolio #panel-daimler.is-active [id^="svg-data-"] {
+animation: daimler-panel-fade var(--daimler-data-duration) calc(var(--daimler-data-delay-start) + (var(--daimler-data-delay-step) * var(--daimler-data-index))) var(--animate-function) backwards; }
+}
 /* Controls */
 
 .panel-carousel-controls {
@@ -1200,8 +1257,8 @@ margin-block-start: var(--spacing-r); }
 
 .panel-carousel-dot {
 appearance: none;
-background-color: #587673;
-border: var(--border-width-r) solid transparent;
+background-color: oklch(0.5416 0.0349 188.55);
+border: var(--border-width-r) solid oklch(0 0 0 / 0);
 border-radius: 999px;
 block-size: 14px;
 cursor: pointer;
@@ -1213,12 +1270,12 @@ scale var(--animate-duration-faster) var(--animate-function); }
 
 .panel-carousel-dot:hover,
 .panel-carousel-dot:focus-visible {
-background-color: #0c0f0e;
+background-color: oklch(0.1646 0.0053 173.62);
 outline: none;
 scale: var(--scale-up); }
 
 .panel-carousel-dot[aria-current="true"] {
-background-color: #B2B095; }
+background-color: oklch(0.7515 0.0374 103.77); }
 
 /* Navigation */
 

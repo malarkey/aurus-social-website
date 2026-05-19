@@ -127,6 +127,12 @@
     carousel.previousElementSibling?.querySelector(".panels-naviagtion") || null;
   let controls = customControls;
   let dots = [];
+  const daimlerPanel = carousel.querySelector("#panel-daimler");
+  const daimlerBars = daimlerPanel
+    ? Array.from(daimlerPanel.querySelectorAll("#svg-progress-bars rect"))
+    : [];
+  let daimlerBarLoopTimeout;
+  let daimlerBarTimeouts = [];
 
   if (controls) {
     controls.setAttribute("aria-label", "Panels");
@@ -194,6 +200,97 @@
     window.history.replaceState(null, "", `#${activePanel.id}`);
   };
 
+  const parseTimeValue = (value, fallback = 0) => {
+    if (!value) {
+      return fallback;
+    }
+
+    const trimmedValue = value.trim();
+
+    if (trimmedValue.endsWith("ms")) {
+      return Number.parseFloat(trimmedValue) || fallback;
+    }
+
+    if (trimmedValue.endsWith("s")) {
+      return (Number.parseFloat(trimmedValue) || 0) * 1000;
+    }
+
+    return fallback;
+  };
+
+  const clearDaimlerBarLoop = () => {
+    if (daimlerBarLoopTimeout) {
+      window.clearTimeout(daimlerBarLoopTimeout);
+      daimlerBarLoopTimeout = undefined;
+    }
+
+    daimlerBarTimeouts.forEach((timeoutId) => {
+      window.clearTimeout(timeoutId);
+    });
+
+    daimlerBarTimeouts = [];
+  };
+
+  const resetDaimlerBars = () => {
+    if (!daimlerBars.length) {
+      return;
+    }
+
+    daimlerBars.forEach((bar) => {
+      bar.classList.remove("is-visible");
+    });
+  };
+
+  const runDaimlerBarLoop = () => {
+    if (!daimlerPanel || !daimlerBars.length || !daimlerPanel.classList.contains("is-active")) {
+      return;
+    }
+
+    clearDaimlerBarLoop();
+    resetDaimlerBars();
+
+    const daimlerStyles = window.getComputedStyle(daimlerPanel);
+    const barFadeDuration = parseTimeValue(
+      daimlerStyles.getPropertyValue("--daimler-bar-fade-duration"),
+      450,
+    );
+    const barHoldDuration = parseTimeValue(
+      daimlerStyles.getPropertyValue("--daimler-bar-hold-duration"),
+      3000,
+    );
+    const barStep = parseTimeValue(
+      daimlerStyles.getPropertyValue("--daimler-bar-step"),
+      540,
+    );
+    const buildOrder = [...daimlerBars].reverse();
+    const hideOrder = [...daimlerBars];
+
+    buildOrder.forEach((bar, index) => {
+      const timeoutId = window.setTimeout(() => {
+        bar.classList.add("is-visible");
+      }, index * barStep);
+
+      daimlerBarTimeouts.push(timeoutId);
+    });
+
+    const buildEndAt = ((buildOrder.length - 1) * barStep) + barFadeDuration;
+    const hideStartAt = buildEndAt + barHoldDuration;
+
+    hideOrder.forEach((bar, index) => {
+      const timeoutId = window.setTimeout(() => {
+        bar.classList.remove("is-visible");
+      }, hideStartAt + (index * barStep));
+
+      daimlerBarTimeouts.push(timeoutId);
+    });
+
+    const cycleDuration = hideStartAt + ((hideOrder.length - 1) * barStep) + barFadeDuration;
+
+    daimlerBarLoopTimeout = window.setTimeout(() => {
+      runDaimlerBarLoop();
+    }, cycleDuration);
+  };
+
   function setActivePanel(nextIndex, options = {}) {
     const { updateHash = false } = options;
     const normalizedIndex = (nextIndex + panels.length) % panels.length;
@@ -220,6 +317,15 @@
 
     if (updateHash) {
       syncHashToActivePanel();
+    }
+
+    if (daimlerPanel) {
+      if (panels[activePanelIndex] === daimlerPanel) {
+        runDaimlerBarLoop();
+      } else {
+        clearDaimlerBarLoop();
+        resetDaimlerBars();
+      }
     }
   }
 
